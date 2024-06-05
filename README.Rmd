@@ -13,11 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# envData: download bioclimatic data from WorldClim in R
+# envData:
+##download bioclimatic data from WorldClim in R
 <!-- badges: start -->
 <!-- badges: end -->
 
-envData aims to  facilitate the interaction with [WorldClim](https://worldclim.org/)
+envData aims to facilitate the interaction with [WorldClim](https://worldclim.org/)
 data. It provides a simple interface for downloading WorldClim bioclimatic layers
 in R, with support for caching and filtering retrieved data by continent.
 
@@ -31,6 +32,37 @@ You can install the development version of envData  from [GitHub](https://github
 remotes::install_github("alrobles/envData")
 ```
 
+## Usage
+The first time using the package the user will experiment long wait times. This is 
+because the package is locally caching the information.
+
+It is possible to test if the server is online:
+
+```{r test}
+library(envData)
+get_bioclim("test")
+```
+
+
+The R packages has two main R functions.
+* `get_bio_layer`: returns an specific bioclimatic layer (i. e. bio_18) for the entire world (default) or for a given continent. We plot the output with the 
+help of the [terra](https://rspatial.github.io/terra/) R package:
+
+```{r example}
+library(terra) 
+test <- get_bio_layer("bio_10", "South America")
+plot(test)
+```
+
+By the other hand `get_bioclim()` will download all the layersfor the entire world. Also it is possible to provide a continent to get all the bioclimatic layers:
+
+```{r get_bioclim}
+South_America <- get_bioclim(continent = "South America")
+plot(South_America)
+```
+
+
+
 ## How it workds
 The original bioclimatic data stored in [WorldClim](https://worldclim.org/) is stored in [TIFF]{https://en.wikipedia.org/wiki/TIFF} format. envData provides a bridge
 to acces this data storing on a [DigitalOcean](https://www.digitalocean.com/) [Space Object Storage](https://docs.digitalocean.com/products/spaces/?_gl=1*7abst9*_ga*MTQ5MzA0NzA4NS4xNzE2NjE3MDQ1*_ga_TYR2BYTLL0*MTcxNzU3MDA0MC4xMy4xLjE3MTc1NzAwNzcuMjMuMC4w) the original data as rds binary files ready to read
@@ -40,34 +72,7 @@ provides previously cropped layers by continent enhancing the manipulaiton in th
 This functionality significantly reduces the download and clipping time of bioclimatic layers with a [GIS](https://en.wikipedia.org/wiki/Geographic_information_system) in an Ecological Niche Modelling pipeline.
 
 ![Figure 1. Package outline](./man/figures/envData_diagram.png)
-## Usage
-The first time using the package the user will experiment long wait times. This is 
-because the package is locally caching the information.
-The R packages has two main R functions.
-* `get_bio_layer`: returns an specific bioclimatic layer (i. e. bio_18) for the entire world (default) or for a given continent. We plot the output with the 
-help of the [terra](https://rspatial.github.io/terra/) R package:
 
-```{r example}
-library(envData)
-library(terra) 
-test <- get_bio_layer("bio_10", "South America")
-plot(test)
-```
-
-By the other hand `get_bioclim()` will download all the layersfor the entire world. Also it is possible to provide a continent to get all the bioclimatic layers:
-
-
-```{r get_bioclim}
-South_America <- get_bioclim(continent = "South America")
-plot(South_America)
-```
-
-It is possible to test if the server is online:
-
-```{r test}
-get_bio_layer("test")
-get_bioclim("test")
-```
 
 
 ## Citation
