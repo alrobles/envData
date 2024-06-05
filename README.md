@@ -44,10 +44,13 @@ of bioclimatic layers with a
 Ecological Niche Modelling pipeline.
 
 ![Figure 1. Package outline](./man/figures/envData_diagram.png) \##
-Usage The R packages has two main R functions. \* `get_bio_layer`:
-returns an specific bioclimatic layer (i. e. bio_18) for the entire
-world (default) or for a given continent. We plot the output with the
-help of the [terra](https://rspatial.github.io/terra/) R package:
+Usage The first time using the package the user will experiment long
+wait times. This is because the package is locally caching the
+information. The R packages has two main R functions. \*
+`get_bio_layer`: returns an specific bioclimatic layer (i. e. bio_18)
+for the entire world (default) or for a given continent. We plot the
+output with the help of the [terra](https://rspatial.github.io/terra/) R
+package:
 
 ``` r
 library(envData)
@@ -63,18 +66,48 @@ plot(test)
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+By the other hand `get_bioclim()` will download all the layersfor the
+entire world. Also it is possible to provide a continent to get all the
+bioclimatic layers:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+South_America <- get_bioclim(continent = "South America")
+#> [=====>------------------------------------------------] 2/19 ( 11%) eta: 3s
+#> [========>---------------------------------------------] 3/19 ( 16%) eta: 3s
+#> [==========>-------------------------------------------] 4/19 ( 21%) eta: 3s
+#> [=============>----------------------------------------] 5/19 ( 26%) eta: 4s
+#> [================>-------------------------------------] 6/19 ( 32%) eta: 4s
+#> [===================>----------------------------------] 7/19 ( 37%) eta: 4s
+#> [======================>-------------------------------] 8/19 ( 42%) eta: 4s
+#> [=========================>----------------------------] 9/19 ( 47%) eta: 3s
+#> [===========================>-------------------------] 10/19 ( 53%) eta: 3s
+#> [==============================>----------------------] 11/19 ( 58%) eta: 3s
+#> [================================>--------------------] 12/19 ( 63%) eta: 3s
+#> [===================================>-----------------] 13/19 ( 68%) eta: 2s
+#> [======================================>--------------] 14/19 ( 74%) eta: 2s
+#> [=========================================>-----------] 15/19 ( 79%) eta: 1s
+#> [============================================>--------] 16/19 ( 84%) eta: 1s
+#> [==============================================>------] 17/19 ( 89%) eta: 1s
+#> [=================================================>---] 18/19 ( 95%) eta: 0s
+#> [=====================================================] 19/19 (100%) eta: 0s
+```
+
+``` r
+plot(South_America)
+```
+
+<img src="man/figures/README-get_bioclim-1.png" width="100%" />
+
+It is possible to test if the server is online:
+
+``` r
+get_bio_layer("test")
+#> [1] "Bioclimatic data is online"
+```
+
+``` r
+get_bioclim("test")
+#> [1] "Bioclimatic data is online"
 ```
 
 ## Citation

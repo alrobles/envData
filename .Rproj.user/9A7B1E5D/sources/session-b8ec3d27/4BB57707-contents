@@ -1,0 +1,30 @@
+Package: envData
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 1.0.0
+Authors@R: 
+  c(person(given = "Angel",
+           family = "Robles",
+           email = "a.l.robles.fernandez@gmail.com",
+           role = c("aut", "cre")),
+    person(given = "Luis E.",
+           family = "Escobar",
+           comment = c(ORCID = "0000-0001-5735-2750"),
+           email = "escobar1@vt.edu",
+           role = c("aut", "ctb"))
+           )
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
+Imports: 
+    httr,
+    magrittr,
+    progress,
+    readr,
+    stringr,
+    terra
+Depends: 
+    R (>= 2.10)

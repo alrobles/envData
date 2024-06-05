@@ -1,0 +1,7 @@
+library(envData)
+bio1 <- get_bio_layer(layer = "bio_19", continent = "Oceania" )
+plot(bio1)
+readr::read_rds("https://worldclim.nyc3.digitaloceanspaces.com/bio_01.rds")
+
+library(terra)
+readr::read_rds("https://worldclim.nyc3.digitaloceanspaces.com/bio_01.rds")
