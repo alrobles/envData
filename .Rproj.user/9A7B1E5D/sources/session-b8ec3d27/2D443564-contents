@@ -1,4 +1,0 @@
-continents %>% 
-  slice(-c(4, 7)) %>% 
-  mutate(id = row_number()) %>% 
-  select(id, continent) %>% use_data(., overwrite = TRUE)

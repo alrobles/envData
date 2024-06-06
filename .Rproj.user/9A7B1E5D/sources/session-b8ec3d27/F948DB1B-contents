@@ -1,5 +1,0 @@
-library(envData)
-Oceania <- get_bioclim(continent = "Oceania")
-library(terra)
-plot(Oceania)
-usethis::use_readme_rmd()

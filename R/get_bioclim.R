@@ -46,10 +46,13 @@ get_bioclim <- function(continent = "World"){
   filePath <- paste0(root, "/", "data/", continent)
 
 
-  if(!file.exists(filePath) | length(list.files(filePath)!= 19) ){
+  if(!file.exists(filePath)){
     MapList <- map_mdd_progress(.x = allLayers, continent = continent)
     rastList <- Reduce(c, MapList)
-  } else{
+  } else if(length(list.files(filePath)!= 19)){
+    MapList <- map_mdd_progress(.x = allLayers, continent = continent)
+    rastList <- Reduce(c, MapList)
+  } else {
     MapList <- Map(readr::read_rds, list.files(filePath, pattern = ".rds$", full.names = TRUE) )
     names(MapList) <- allLayers
     rastList <- Reduce(c, MapList)
