@@ -50,12 +50,18 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
+  <main id="main" class="col-md-9"><p><img src="reference/figures/envData-logo.png"></p>
+<div class="section level1">
 <div class="page-header"><h1 id="envdata">envData:<a class="anchor" aria-label="anchor" href="#envdata"></a>
 </h1></div>
-<p>##download bioclimatic data from WorldClim in R <!-- badges: start --> <!-- badges: end --></p>
+<div class="section level2">
+<h2 id="download-bioclimatic-data-from-worldclim-in-r">download bioclimatic data from WorldClim in R<a class="anchor" aria-label="anchor" href="#download-bioclimatic-data-from-worldclim-in-r"></a>
+</h2>
+<!-- badges: start -->
+<!-- badges: end -->
 <p>envData aims to facilitate the interaction with <a href="https://worldclim.org/" class="external-link">WorldClim</a> data. It provides a simple interface for downloading WorldClim bioclimatic layers in R, with support for caching and filtering retrieved data by continent.</p>
 <p>envData is designed for easy integration of bioclimatic data into ecological niche model pipelines. It provides a simple interface for accessing and filtering bioclimatic data.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -74,8 +80,7 @@
 <span><span class="co">#&gt; [1] "Bioclimatic data is online"</span></span></code></pre></div>
 <p>The R packages has two main R functions. * <code>get_bio_layer</code>: returns an specific bioclimatic layer (i. e. bio_18) for the entire world (default) or for a given continent. We plot the output with the help of the <a href="https://rspatial.github.io/terra/" class="external-link">terra</a> R package:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://alrobles.github.io/envData/">envData</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span> </span>
 <span><span class="co">#&gt; Warning: package 'terra' was built under R version 4.2.3</span></span>
 <span><span class="co">#&gt; terra 1.7.39</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -85,21 +90,20 @@
 <p>By the other hand <code><a href="reference/get_bioclim.html">get_bioclim()</a></code> will download all the layersfor the entire world. Also it is possible to provide a continent to get all the bioclimatic layers:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">South_America</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bioclim.html">get_bioclim</a></span><span class="op">(</span>continent <span class="op">=</span> <span class="st">"South America"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [=====&gt;------------------------------------------------] 2/19 ( 11%) eta: 2s</span></span>
-<span><span class="co">#&gt; [========&gt;---------------------------------------------] 3/19 ( 16%) eta: 3s</span></span>
-<span><span class="co">#&gt; [==========&gt;-------------------------------------------] 4/19 ( 21%) eta: 3s</span></span>
-<span><span class="co">#&gt; [=============&gt;----------------------------------------] 5/19 ( 26%) eta: 3s</span></span>
-<span><span class="co">#&gt; [================&gt;-------------------------------------] 6/19 ( 32%) eta: 3s</span></span>
+<span><span class="co">#&gt; [========&gt;---------------------------------------------] 3/19 ( 16%) eta: 2s</span></span>
+<span><span class="co">#&gt; [==========&gt;-------------------------------------------] 4/19 ( 21%) eta: 2s</span></span>
+<span><span class="co">#&gt; [=============&gt;----------------------------------------] 5/19 ( 26%) eta: 2s</span></span>
+<span><span class="co">#&gt; [================&gt;-------------------------------------] 6/19 ( 32%) eta: 2s</span></span>
 <span><span class="co">#&gt; [===================&gt;----------------------------------] 7/19 ( 37%) eta: 2s</span></span>
-<span><span class="co">#&gt; [======================&gt;-------------------------------] 8/19 ( 42%) eta: 2s</span></span>
-<span><span class="co">#&gt; [=========================&gt;----------------------------] 9/19 ( 47%) eta: 2s</span></span>
-<span><span class="co">#&gt; [===========================&gt;-------------------------] 10/19 ( 53%) eta: 2s</span></span>
+<span><span class="co">#&gt; [======================&gt;-------------------------------] 8/19 ( 42%) eta: 1s</span></span>
+<span><span class="co">#&gt; [=========================&gt;----------------------------] 9/19 ( 47%) eta: 1s</span></span>
+<span><span class="co">#&gt; [===========================&gt;-------------------------] 10/19 ( 53%) eta: 1s</span></span>
 <span><span class="co">#&gt; [==============================&gt;----------------------] 11/19 ( 58%) eta: 1s</span></span>
 <span><span class="co">#&gt; [================================&gt;--------------------] 12/19 ( 63%) eta: 1s</span></span>
 <span><span class="co">#&gt; [===================================&gt;-----------------] 13/19 ( 68%) eta: 1s</span></span>
 <span><span class="co">#&gt; [======================================&gt;--------------] 14/19 ( 74%) eta: 1s</span></span>
 <span><span class="co">#&gt; [=========================================&gt;-----------] 15/19 ( 79%) eta: 1s</span></span>
-<span><span class="co">#&gt; [============================================&gt;--------] 16/19 ( 84%) eta: 1s</span></span>
+<span><span class="co">#&gt; [============================================&gt;--------] 16/19 ( 84%) eta: 0s</span></span>
 <span><span class="co">#&gt; [==============================================&gt;------] 17/19 ( 89%) eta: 0s</span></span>
 <span><span class="co">#&gt; [=================================================&gt;---] 18/19 ( 95%) eta: 0s</span></span>
 <span><span class="co">#&gt; [=====================================================] 19/19 (100%) eta: 0s</span></span></code></pre></div>
@@ -108,9 +112,9 @@
 <p><img src="reference/figures/README-get_bioclim-1.png" width="100%"></p>
 </div>
 <div class="section level2">
-<h2 id="how-it-workds">How it workds<a class="anchor" aria-label="anchor" href="#how-it-workds"></a>
+<h2 id="how-it-works">How it works<a class="anchor" aria-label="anchor" href="#how-it-works"></a>
 </h2>
-<p>The original bioclimatic data stored in <a href="https://worldclim.org/" class="external-link">WorldClim</a> is stored in [TIFF]{<a href="https://en.wikipedia.org/wiki/TIFF" class="external-link uri">https://en.wikipedia.org/wiki/TIFF</a>} format. envData provides a bridge to acces this data storing on a <a href="https://www.digitalocean.com/" class="external-link">DigitalOcean</a> <a href="https://docs.digitalocean.com/products/spaces/?_gl=1*7abst9*_ga*MTQ5MzA0NzA4NS4xNzE2NjE3MDQ1*_ga_TYR2BYTLL0*MTcxNzU3MDA0MC4xMy4xLjE3MTc1NzAwNzcuMjMuMC4w" class="external-link">Space Object Storage</a> the original data as rds binary files ready to read by the <a href="https://rspatial.github.io/terra/" class="external-link">terra</a> R package. Additionally we envData provides previously cropped layers by continent enhancing the manipulaiton in the R environment.</p>
+<p>The original bioclimatic data in <a href="https://worldclim.org/" class="external-link">WorldClim</a> is stored in [TIFF]{<a href="https://en.wikipedia.org/wiki/TIFF" class="external-link uri">https://en.wikipedia.org/wiki/TIFF</a>} format. <code>envData</code> provides a bridge to acces this data storing on a <a href="https://www.digitalocean.com/" class="external-link">DigitalOcean</a> <a href="https://docs.digitalocean.com/products/spaces/?_gl=1*7abst9*_ga*MTQ5MzA0NzA4NS4xNzE2NjE3MDQ1*_ga_TYR2BYTLL0*MTcxNzU3MDA0MC4xMy4xLjE3MTc1NzAwNzcuMjMuMC4w" class="external-link">Space Object Storage</a> the original data as <code>rds</code> binary files ready to read by the <a href="https://rspatial.github.io/terra/" class="external-link">terra</a> R package. Additionally we envData provides previously cropped layers by continent enhancing the manipulaiton in the R environment.</p>
 <p>This functionality significantly reduces the download and clipping time of bioclimatic layers with a <a href="https://en.wikipedia.org/wiki/Geographic_information_system" class="external-link">GIS</a> in an Ecological Niche Modelling pipeline.</p>
 <figure><img src="./reference/figures/envData_diagram.png" alt="Figure 1. Package outline"><figcaption aria-hidden="true">
 Figure 1. Package outline
@@ -121,11 +125,12 @@ Figure 1. Package outline
 </h2>
 <p>Please follow the <a href="https://worldclim.org/data/worldclim21.html" class="external-link">instructions from the authors</a> when citing WorldClim data. At time of writing, this includes a citation to the paper the describing the WorldClim database:</p>
 <ul>
-<li>Fick, S.E. and R.J. Hijmans, 2017. [WorldClim 2: new 1km spatial resolution climate surfaces for global land areas]{<a href="https://doi.org/10.1002/joc.5086" class="external-link uri">https://doi.org/10.1002/joc.5086</a>}. <em>International Journal of Climatology</em> 37 (12): 4302-4315.</li>
+<li>Fick, S.E. and R.J. Hijmans, 2017. <a href="https://doi.org/10.1002/joc.5086" class="external-link">WorldClim 2: new 1km spatial resolution climate surfaces for global land areas</a>. <em>International Journal of Climatology</em> 37 (12): 4302-4315.</li>
 </ul>
 <p>Use <code>citation("envData")</code> for more details and the references in BibTeX format.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
